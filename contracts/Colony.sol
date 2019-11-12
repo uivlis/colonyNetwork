@@ -271,7 +271,7 @@ contract Colony is ColonyStorage, PatriciaTreeProofs {
     IColonyNetwork(colonyNetworkAddress).setExtensionManager(_extensionManagerAddress);
   }
 
-  function addExtension(bytes32 _extensionId, address _resolver, uint8[] memory _roles)
+  function addExtension(bytes32 _extensionId, address _resolver, bytes32 _roles)
   public stoppable auth
   {
     IColonyNetwork(colonyNetworkAddress).addExtension(_extensionId, _resolver, _roles);
@@ -399,7 +399,7 @@ contract Colony is ColonyStorage, PatriciaTreeProofs {
     // Add extension manager
     colonyAuthority.setRoleCapability(uint8(ColonyRole.Root), address(this), SIG_D0, true);
     colonyAuthority.setRoleCapability(uint8(ColonyRole.Root), address(this), SIG_D1, true);
-    colonyAuthority.setRoleCapability(uint8(ColonyRole.Architecture), address(this), SIG_D2 true);
+    colonyAuthority.setRoleCapability(uint8(ColonyRole.Architecture), address(this), SIG_D2, true);
   }
 
   function checkNotAdditionalProtectedVariable(uint256 _slot) public view recovery {
